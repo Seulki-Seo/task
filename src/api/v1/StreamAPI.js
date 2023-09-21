@@ -2,7 +2,7 @@ import axios from "axios";
 import queryString from "query-string";
 
 export default class StreamAPI {
-  static v1 = "/stream/";
+  static v1 = "/stream";
   /**
    * Stream API
    */
@@ -25,7 +25,7 @@ export default class StreamAPI {
    */
   static getModelData({ prediction, bbox, date, time, model, line_num }) {
     return axios.get(
-      `${this.v1}/infer/${queryString.stringify({
+      `${this.v1}/infer?${queryString.stringify({
         prediction,
         bbox,
         date,

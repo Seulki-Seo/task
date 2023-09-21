@@ -46,17 +46,7 @@ export default {
        */
       try {
         const { data } = await StreamAPI.v1.getModelData({
-          prediction: "",
-          bbox: {
-            left: 0,
-            top: 0,
-            width: 0,
-            height: 0,
-          },
-          date: "",
-          time: "",
-          model: "",
-          line_num: "",
+          ...this.modelInfo,
         });
         if (data) {
           console.log("이벤트 성공", data);
@@ -147,8 +137,8 @@ export default {
       <div class="bot">
         <h3>Monitoring</h3>
         <div class="model_img">
-          <div class="img_box">
-            <img :src="'@/assets/' + cutImgUrl" alt="" />
+          <div class="img_box" v-if="cutImgUrl !== ''">
+            <img :src="'/assets/' + cutImgUrl" alt="" />
             <div class="img_title">
               {{ cutImgUrl }}
             </div>
